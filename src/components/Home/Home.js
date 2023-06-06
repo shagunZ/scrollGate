@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import './Homemodule.css'
 import Loader from "../Loader/Loader";
 import TextLinkExample from "../Navbar";
-import { UserContext } from "../UserContext";
+// import { UserContext } from "../UserContext";
 import { auth } from '../../firebase';
 
 function Home(props) {
@@ -24,7 +24,7 @@ function Home(props) {
   }, [userName]);
 
 
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState({});
   
   const [data,setData] = useState([]);
@@ -82,7 +82,7 @@ useEffect(()=>{
   window.addEventListener("scroll",handleScroll);
 
   return ()=>window.removeEventListener("scroll",handleScroll)
-},[])
+},[handleScroll])
 
 
 

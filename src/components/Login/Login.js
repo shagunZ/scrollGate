@@ -32,32 +32,6 @@ function Login(){
         
         const auth = getAuth(); 
 
-//         signInWithEmailAndPassword(auth, values.email, values.pass)
-//         .then(async(res) => {
-//             setSubmitButtonDisabled(false);
-//             const user = res.user;
-//             localStorage.setItem("user", user.displayName);
-           
-//             await updateProfile(user,{
-//                 // displayName:name
-//                 displayName:values.name
-//             });
-//             user.displayName = values.name;
-//             console.log(user)
-//             console.log(login)
-//             console.log(values.name)
-//             login(values.name); 
-//             // login(user.displayName); 
-//             navigate("/");
-//   })
-//   .catch((error) => {
-//     setSubmitButtonDisabled(false);
-//     setErrormsg("error",error.message);
-//   });
-
-// ...
-
-// ...
 
 signInWithEmailAndPassword(auth, values.email, values.pass)
       .then((res) => {

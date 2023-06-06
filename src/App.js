@@ -5,28 +5,19 @@ import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import Signup from "./components/Signup/Signup";
 import {auth} from "./firebase";
-import {signOut,updateProfile} from "firebase/auth"
-
 
 
 function App() {
   const [userName,setUserName]=useState("")
   const [userEmail, setUserEmail] = useState('');
   const [loading, setLoading] = useState(true);
-  // useEffect(()=>{
-  //   auth.onAuthStateChanged((user)=>{
-  //     if(user){
-  //       setUserName(user.displayName);
-  //     }else setUserName("");
-  //     console.log(user);
-  //   })
-  // },[]);
 
 
   useEffect(() => {
     const userEmailFromLocalStorage = localStorage.getItem('userEmail');
     if (userEmailFromLocalStorage) {
       setUserEmail(userEmailFromLocalStorage);
+      console.log(setUserName);
     }
 
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -44,7 +35,7 @@ function App() {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [loading]);
 
   
   return (

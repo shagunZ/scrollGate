@@ -1,20 +1,19 @@
-import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import {signOut,updateProfile} from "firebase/auth"
+import {signOut} from "firebase/auth"
 import { auth } from "../firebase";
-import {Link,useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import { useState,useEffect,useContext } from 'react';
 import { UserContext } from './UserContext';
 
 
-function TextLinkExample(props) {
+function TextLinkExample() {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(auth.currentUser);
-const [values,setValues] = useState({
-        name:"",
-    })
+// const [values,setValues] = useState({
+//         name:"",
+//     })
 
     const { userName,logout } = useContext(UserContext);
 
@@ -26,7 +25,7 @@ const [values,setValues] = useState({
   
       // Clean up the event listener on component unmount
       return () => unsubscribe();
-    }, []);
+    }, [isAuthenticated]);
 
 
 const HandleSignout=()=>{

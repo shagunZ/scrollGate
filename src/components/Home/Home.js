@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useContext} from "react";
+import React,{useState,useEffect} from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -8,14 +8,10 @@ import TextLinkExample from "../Navbar";
 // import { UserContext } from "../UserContext";
 import { auth } from '../../firebase';
 
-function Home(props) {
+function Home() {
   const [userEmail, setUserEmail] = useState('');
   const [userName, setUserName] = useState('');
 
-
-  // const { userName } = props;
-
-  
   // const { userName } = useContext(UserContext);
 
 
@@ -31,7 +27,7 @@ function Home(props) {
   const [page,setPage] = useState(1);
   const [loading,setLoading] = useState(true);
   const [hasmore,setHasmore] = useState(false);
-  const [isNameLoaded, setIsNameLoaded] = useState(false);
+  // const [isNameLoaded, setIsNameLoaded] = useState(false);
 
   const handleClose = (itemId) => {
     setShowModal(prevState => ({
@@ -57,16 +53,36 @@ function Home(props) {
     console.log(data)
     setData(prev=> [...prev,...data])
     setHasmore(response.data.docs.length>0);
+    console.log(hasmore);
     setLoading(false);
     }catch(error){
       console.log(error);
     }
   }
   fetchData();
-  },[page])
+  },[page,hasmore])
 
   
 
+//   const handleScroll = () => {
+//     const { scrollTop, clientHeight, scrollHeight } =
+//         document.documentElement;
+// const totalPages = Math.ceil(20/4)
+//     if (scrollTop + clientHeight >= scrollHeight) {
+//       if(page===totalPages)setPage(1);
+//         setPage((prev) => prev + 1);
+//     }
+// };
+
+
+// useEffect(()=>{
+//   window.addEventListener("scroll",handleScroll);
+
+//   return ()=>window.removeEventListener("scroll",handleScroll)
+// },[])
+
+
+useEffect(() => {
   const handleScroll = () => {
     const { scrollTop, clientHeight, scrollHeight } =
         document.documentElement;
@@ -75,23 +91,22 @@ const totalPages = Math.ceil(20/4)
       if(page===totalPages)setPage(1);
         setPage((prev) => prev + 1);
     }
-};
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, [page]);
 
 
-useEffect(()=>{
-  window.addEventListener("scroll",handleScroll);
 
-  return ()=>window.removeEventListener("scroll",handleScroll)
-},[handleScroll])
-
-
-
-
-useEffect(() => {
-  if (userName) {
-    setIsNameLoaded(true);
-  }
-}, [userName]);
+// useEffect(() => {
+//   if (userName) {
+//     setIsNameLoaded(true);
+//   }
+// }, [userName]);
 
 
 useEffect(() => {

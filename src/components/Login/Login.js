@@ -9,11 +9,11 @@ import TextLinkExample from "../Navbar";
 
 function Login(){
 
-    const { userName,login } = useContext(UserContext);
-    const [name, setName] = useState('');
+    // const { userName,login } = useContext(UserContext);
+    const { login } = useContext(UserContext);
+    // const [name, setName] = useState('');
     const navigate = useNavigate();
     const [values,setValues] = useState({
-        // name:"",
         email:"",
         pass:""
     })
@@ -65,11 +65,11 @@ signInWithEmailAndPassword(auth, values.email, values.pass)
 
         updateProfile(user, { displayName: values.name })
           .then(() => {
-            // Fetch the updated user data to get the display name
+            
             const updatedUser = auth.currentUser;
             const displayName = updatedUser.displayName;
-            setName(values.name);
-            login(displayName); // Pass the display name to the login function
+            // setName(values.name);
+            login(displayName); 
             navigate('/');
           })
           .catch((error) => {

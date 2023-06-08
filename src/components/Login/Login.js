@@ -44,7 +44,7 @@ signInWithEmailAndPassword(auth, values.email, values.pass)
             const displayName = updatedUser.displayName;
             // setName(values.name);
             login(displayName); 
-            navigate('/');
+            navigate('/home');
           })
           .catch((error) => {
             setSubmitButtonDisabled(false);
@@ -77,7 +77,7 @@ signInWithEmailAndPassword(auth, values.email, values.pass)
                     <button disabled={submitButtonDisabled} onClick={handleSubmission}>
             Login
           </button>
-                    <p>Already have an account?{" "}
+                    <p> New account?{" "}
                     <span>
                         <Link to="/signup">Sign up</Link>
                     </span>

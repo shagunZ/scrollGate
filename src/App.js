@@ -43,9 +43,10 @@ function App() {
     <div className="App">
       <Router>
         <Routes >
+          <Route path="/" element={<Signup/>} />
           <Route path="/login" element={<Login  userEmail={userEmail}/>} />
           <Route path="/signup" element={<Signup/>} />
-          <Route path="/" element={<Home username={userName} />} />
+          <Route path="/home" element={<Home username={userName} />} />
         </Routes>
       </Router>
     </div>

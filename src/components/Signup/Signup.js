@@ -41,7 +41,7 @@ function Signup(){
             });
             localStorage.setItem("userName", values.name);
             setUserName(values.name);
-            navigate("/");
+            navigate("/home");
 
 
   })
